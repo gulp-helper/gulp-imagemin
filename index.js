@@ -76,7 +76,7 @@ module.exports = (plugins, opts) => {
 				cb(null, file);
 			})
 			.catch(err => {
-				cb(new gutil.PluginError('gulp-imagemin:', err, {fileName: file.path}));
+				setImmediate(cb, new gutil.PluginError('gulp-imagemin', err, {fileName: file.path}));
 			});
 	}, cb => {
 		const percent = totalBytes > 0 ? (totalSavedBytes / totalBytes) * 100 : 0;
